@@ -27,4 +27,4 @@
 6. 해결전략을 README.md에 작성한다.
 
 # 해결 전략
-[x] webpack 환경 구성
+-[x] webpack 환경 구성
