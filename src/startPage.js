@@ -1,8 +1,4 @@
-import axios from "axios";
-
 const GetGameWords = async (callback) => {
-	//const { data } = await axios.get("https://my-json-server.typicode.com/kakaopay-fe/resources/words");
-	//return data;
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "https://my-json-server.typicode.com/kakaopay-fe/resources/words");
     xhr.onreadystatechange = () => {
@@ -100,9 +96,6 @@ const gameStart = async (e) => {
 		await GetGameWords(data => {
 			questionStart(data)
 		});
-
-		//const words = [].concat(await GetGameWords(data => data));
-		// questionStart(words);
 	}
 }
 
