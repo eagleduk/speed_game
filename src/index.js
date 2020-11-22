@@ -7,6 +7,3 @@ window.addEventListener('hashchange', Router);
 document.addEventListener("DOMContentLoaded", () => {
     Router();
 });
-
-
-

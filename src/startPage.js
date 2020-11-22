@@ -1,12 +1,26 @@
 import axios from "axios";
 
-const GetGameWords = async () => {
-	const { data } = await axios.get("https://my-json-server.typicode.com/kakaopay-fe/resources/words");
-	return data;
+const GetGameWords = async (callback) => {
+	//const { data } = await axios.get("https://my-json-server.typicode.com/kakaopay-fe/resources/words");
+	//return data;
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://my-json-server.typicode.com/kakaopay-fe/resources/words");
+    xhr.onreadystatechange = () => {
+		if(xhr.readyState === 4) {
+			if(xhr.status===200) {
+				const data = eval("("+xhr.response+")");
+				callback(data);
+			} else {
+				console.log(xhr.status, "Error", xhr.statusText);
+				callback([]);
+			}
+		}
+    }
+	xhr.send();
 }
 
 const gameOver = (score, totalTime) => {
-	const avg = score===0 ? 0 : totalTime / score ;
+	const avg = !score ? 0 : totalTime / score ;
 	localStorage.setItem("score", score);
 	localStorage.setItem("avg", avg.toFixed(1));
 
@@ -25,7 +39,7 @@ const questionStart = (words = []) => {
 	gameTimer = setInterval(() => {
 		score_content.innerText = `점수: ${score} 점`;
 		
-		if(flag && score > 0) {
+		if(flag && words.length) {
 			const word = words.shift();
 			text = word.text,
 			second = word.second;
@@ -46,7 +60,7 @@ const questionStart = (words = []) => {
 						flag = true;
 						totalTime += time;
 						console.log(`정답.. ${text} ::: ${second} , ${time}, ${totalTime}`);
-						if(words.length === 0) {
+						if(!words.length) {
 							clearInterval(gameTimer);
 							gameOver(score, totalTime);
 						}
@@ -63,7 +77,7 @@ const questionStart = (words = []) => {
 			score--;
 		}
 
-		if(words.length === 0 && flag) {
+		if(!words.length && flag) {
 			clearInterval(gameTimer);
 			gameOver(score, totalTime);
 		}
@@ -78,13 +92,17 @@ const gameStart = async (e) => {
 	} else {
 
 		e.target.classList.add("reset--btn");
-		const words = [].concat(await GetGameWords());
-	
+
 		const answer_input = document.querySelector("input.answer--input");
 		answer_input.disabled = false;
 		answer_input.focus();
-	
-		questionStart(words);
+
+		await GetGameWords(data => {
+			questionStart(data)
+		});
+
+		//const words = [].concat(await GetGameWords(data => data));
+		// questionStart(words);
 	}
 }
 

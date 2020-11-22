@@ -47,8 +47,7 @@ const render = (score, avg) => {
     APPCONTENT.innerHTML="";
     APPCONTENT.appendChild(render_header());
 	APPCONTENT.appendChild(render_main(score, avg));
-	APPCONTENT.appendChild(render_footer());
-    
+	APPCONTENT.appendChild(render_footer());    
 }
 
 export {
