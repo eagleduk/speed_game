@@ -55,7 +55,6 @@ const questionStart = (words = []) => {
 					if(answer===text) {
 						flag = true;
 						totalTime += time;
-						console.log(`정답.. ${text} ::: ${second} , ${time}, ${totalTime}`);
 						if(!words.length) {
 							clearInterval(gameTimer);
 							gameOver(score, totalTime);

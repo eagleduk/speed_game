@@ -39,12 +39,12 @@
     - javascript, es6를 사용하여 구현
 
 3. routing
-    - hash 방식의 routing으로 SPA구현   
+    - hash 방식의 routing으로 구현   
     ![Alt text](readme/image4.PNG)
     - hash의 값에 따라 game, result 화면을 랜더링   
     ![Alt text](readme/image5.PNG)
         - hash의 값이 #game 또는 #result 이외의 값이 입력되었을 때 game 화면으로 이동
-        - hash의 값이 #result 일 때, 점수 와 평균시간이 없을 때 game 화면으로 이동
+        - hash의 값이 #result 이지만 점수 와 평균시간이 없을 때 game 화면으로 이동
 
 4. 단위 테스트
     - 시작, 초기화, 다시시작 의 버튼이 정상적으로 동작하는지 확인
@@ -60,7 +60,7 @@
 
 5. 단어는 서버에 요청
     - XMLHttpRequest 사용
-    - 정상적으로 단어 리스트를 응답 받았을 때 게임 시작
+    - 단어 리스트를 응답 받았을 때 게임 시작
     - 단어 리스트가 없거나 에러 발생시 점수 0, 평균시간 0 인 결과 화면이 보여진다.
 
 6. 해결전략
@@ -71,4 +71,8 @@
     - 제한된 시간이 모두 소진되거나, 정답을 맞추면 단어를 가져오기 위해서 [flag] 값을 사용.
     - 입력 박스의 eventlistener 를 중복으로 추가하지 않기 위해서 [once] 값을 사용.
     - 정답을 맞힌 점수가 0 보다 크면 정답을 맞힌 시간의 합으로 나누어 소수점 1 자리까지 평균시간을 구한다.
-    - 점수와 평균시간을 전달하기 위하여 localStorage 사용하여 데이터를 전송한다.
+    - 점수와 평균시간을 전달하기 위하여 localStorage 사용하여 데이터를 전송한다. 사용 후 데이터는 삭제한다.
+
+# 그외
+Google Drive: https://drive.google.com/drive/folders/1VXXh1IMXtEczaDJ2JuraVBGQ7IbhWVXu?usp=sharing
+GitHub: https://github.com/eagleduk/speed_game
