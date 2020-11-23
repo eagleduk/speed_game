@@ -74,5 +74,5 @@
     - 점수와 평균시간을 전달하기 위하여 localStorage 사용하여 데이터를 전송한다. 사용 후 데이터는 삭제한다.
 
 # 그외
-Google Drive: https://drive.google.com/drive/folders/1VXXh1IMXtEczaDJ2JuraVBGQ7IbhWVXu?usp=sharing
+Google Drive: https://drive.google.com/drive/folders/1VXXh1IMXtEczaDJ2JuraVBGQ7IbhWVXu?usp=sharing   
 GitHub: https://github.com/eagleduk/speed_game
